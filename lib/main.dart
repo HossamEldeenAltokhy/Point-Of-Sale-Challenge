@@ -267,10 +267,7 @@ class AddItemPage extends StatelessWidget {
                     
                     controller: item_content,
 
-                    onEditingComplete: (){
-                      item_content.text = "Hossam";
-                      return "vfvdvvd";
-                    },
+
 
                   )
 
@@ -280,17 +277,32 @@ class AddItemPage extends StatelessWidget {
               ),
             ),
 
-            Container(
+            Padding(
+              padding: const EdgeInsets.only(left: 49.0),
+              child: Container(
 
 
-              alignment: Alignment.centerLeft,
-              child:
-                    TextField(
-                      controller: item_content_error,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.red,
-                    ),)
+                alignment: Alignment.centerLeft,
+                child:
+                      TextFormField(
+                        decoration: InputDecoration(
+                          hasFloatingPlaceholder: false,
+                          isDense: false,
+                          enabled: false,
+                          filled: false
+                            ,
+                          alignLabelWithHint: false
+                        ),
+                        enabled: false,
+                        enableInteractiveSelection: false,
+                        maxLengthEnforced: false,
+
+                        controller: item_content_error,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.red,
+                      ),)
+              ),
             ),
 
 
