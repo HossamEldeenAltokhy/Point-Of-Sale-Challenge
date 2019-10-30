@@ -1,8 +1,10 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 
 int _count = 0;
+
+String errorMessage = "";
 void main() {
 
   runApp(
@@ -234,7 +236,7 @@ class AddItemPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(24, 100, 24, 20),
+              padding: const EdgeInsets.fromLTRB(24, 80, 24, 20),
               child: Container(
 
                 width: 328.0,
@@ -278,13 +280,18 @@ class AddItemPage extends StatelessWidget {
               ),
             ),
 
-//            Container(
-//
-//              alignment: Alignment.centerLeft,
-//              child:  Text('Numbers not allowed',
-//
-//              ),
-//            ),
+            Container(
+
+
+              alignment: Alignment.centerLeft,
+              child:
+                    TextField(
+                      controller: item_content_error,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.red,
+                    ),)
+            ),
 
 
             Container(
@@ -315,9 +322,17 @@ class AddItemPage extends StatelessWidget {
                         ),),
 
                       onPressed: (){
-                        _items.add(item_content.text);
+                        if(!RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]').hasMatch(item_content.text)){
+                          item_content_error.text  = '';
+                          _items.add(item_content.text);
+                          Navigator.of(context).pushNamed("/");
+                        }
+
+                        else{
+                          item_content_error.text= 'Numbers not allowed';
+                        }
                         
-                        //Navigator.of(context).pushNamed("/");
+
                       },
                     )
 
